@@ -8,7 +8,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#e6f0ed] py-16 px-4">
+    <footer className=" py-16 px-4">
       <div className=" mx-auto bg-gradient-to-br from-[#0d3b36] to-[#0a2e2a] text-white rounded-2xl shadow-xl p-8 md:p-12 relative overflow-hidden">
         
         {/* Decorative background lines */}
