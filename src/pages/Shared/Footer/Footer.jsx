@@ -3,9 +3,6 @@ import { Input } from "@/components/ui/input";
 import Logo from "@/CustomComponents/Logo";
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-
-
-
 const Footer = () => {
   return (
     <footer className=" py-16 px-4">
