@@ -30,7 +30,11 @@ const Brands = () => {
                 }}
             >
 
-                {brands.map((brand, index) => <SwiperSlide key={index}><img src={brand} alt="brand" className="" /></SwiperSlide>)}
+                {brands.map((brand, index) => <SwiperSlide key={index}>
+                    <div className="h-20 flex items-center justify-center">
+                        <img src={brand} alt="brand" className="w-36 h-16 object-contain" />
+                    </div>
+                </SwiperSlide>)}
 
             </Swiper>
         </div>
