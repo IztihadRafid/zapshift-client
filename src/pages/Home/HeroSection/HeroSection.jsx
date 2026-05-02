@@ -12,7 +12,7 @@ const HeroSection = () => {
     return (
         <div className="md:m-0 m-2">
             {
-                heroData.map((item, index) => <div key={index} className="md:flex items-center justify-between my-6 px-4 md:px-8 py-8 bg-white rounded-[15px]">
+                heroData.map((item, index) => <div key={index} className="md:flex max-w-6xl mx-auto items-center justify-between my-6 px-4 md:px-8 py-8 bg-white rounded-[15px]">
                     <div className="w-full md:w-1/4 flex justify-center">
                         <img src={item?.image} alt="image" className="w-48 h-48 md:w-56 md:h-56 object-contain" />
                     </div>

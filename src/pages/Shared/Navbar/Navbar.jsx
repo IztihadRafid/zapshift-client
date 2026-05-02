@@ -23,7 +23,7 @@ const Navbar = () => {
     </li>
   </>
   return (
-    <nav className="flex items-center justify-between py-4 mb-2 rounded-4xl bg-white">
+    <nav className="flex items-center justify-between py-4 mb-2 rounded-[15px] bg-white">
       <Logo></Logo>
       <div className="hidden md:flex items-center gap-4">
         {links}

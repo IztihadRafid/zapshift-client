@@ -5,8 +5,8 @@ import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
-    <footer className=" py-16 px-4">
-      <div className=" mx-auto bg-gradient-to-br from-[#0d3b36] to-[#0a2e2a] text-white rounded-2xl shadow-xl p-8 md:p-12 relative overflow-hidden">
+    <footer className=" pt-16 px-4 ">
+      <div className=" mx-auto rounded-[15px] bg-gradient-to-br from-[#0d3b36] to-[#0a2e2a] text-white  shadow-xl p-8 md:p-12 relative overflow-hidden">
         
         {/* Decorative background lines */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:20px_20px]" />
