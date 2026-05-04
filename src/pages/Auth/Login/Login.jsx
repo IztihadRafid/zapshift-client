@@ -5,8 +5,8 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const { loginUser } = useAuth();
+    const { register, handleSubmit,getValues, formState: { errors } } = useForm();
+    const { loginUser, forgetPassword } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -18,8 +18,22 @@ const Login = () => {
                 console.log(res.user)
                 navigate(location?.state || "/")
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err))    
     };
+const handleForgetPassword=()=>{
+    const email = getValues('email');
+    if(!email){
+        alert('Please enter your email')
+        return;
+    }
+    forgetPassword(email)
+    .then(()=>{
+        alert('Password reset link sent to your email')
+    })
+    .catch(err=>console.log(err))
+}
+
+
 
     return (
         <div className="flex items-center justify-center px-4">
@@ -104,10 +118,10 @@ const Login = () => {
                     </form>
 
                     <SocialLogin></SocialLogin>
-
+                    <button onClick={handleForgetPassword} className="text-center text-lime-600 hover:text-lime-700 p-2">Forget Password</button>
                     <p className="text-base text-center mt-4 text-gray-500 flex flex-wrap justify-center gap-1">
                         <span> Don't have account?{" "}</span>
-                        <NavLink state={location?.state} to="/register" className="text-primary cursor-pointer hover:text-lime-600">
+                        <NavLink state={location?.state} to="/register" className="text-primary cursor-pointer hover:text-lime-700">
                             Register
                         </NavLink>
                     </p>
