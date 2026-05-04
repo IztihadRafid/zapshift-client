@@ -37,7 +37,7 @@ const Navbar = () => {
       <div className=" flex items-center gap-4 lg:mr-4">
         {user?.displayName}
         {user?.email ? <button onClick={()=>{handleLogOut()}} className="px-4 py-2 rounded-[20px] hover:bg-lime-600 bg-gray-500 text-white">Sign Out</button> : <NavLink to="/login" className="bg-gray-500 text-white hover:bg-lime-600 px-4 py-2 rounded-[20px]">Login</NavLink>}
-        <NavLink to="/register" className="bg-primary text-white hover:bg-lime-600 px-4 py-2 rounded-[20px]">Be a Rider</NavLink>
+        <NavLink to="/rider" className="bg-primary text-white hover:bg-lime-600 px-4 py-2 rounded-[20px]">Be a Rider</NavLink>
       </div>
     </nav>
   );

@@ -1,14 +1,17 @@
 
 import useAuth from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
+import { useLocation, useNavigate } from "react-router";
 
 const SocialLogin = () => {
     const { googleLogin } = useAuth();
-
+    const location = useLocation()
+    const navigate = useNavigate();
     const handleGoogleLogin = () => {
         googleLogin()
             .then(res => {
                 console.log(res.user)
+                navigate(location?.state || "/")
             })
             .catch(err => console.log(err))
     };

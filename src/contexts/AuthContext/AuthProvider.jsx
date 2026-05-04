@@ -8,20 +8,12 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-
-    const registerUser = async (firstName, lastName, email, password) => {
+    const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile)
+    }
+    const registerUser = async (email, password) => {
         setLoading(true);
-
-        try {
-            const result = await createUserWithEmailAndPassword(auth, email, password);
-            await updateProfile(result.user, {
-                displayName: `${firstName} ${lastName}`
-            });
-            await result.user.reload();
-            return result;
-        } finally {
-            setLoading(false);
-        }
+        return createUserWithEmailAndPassword(auth, email, password);
     };
     const loginUser = (email, password) => {
         setLoading(true)
@@ -46,7 +38,7 @@ const AuthProvider = ({ children }) => {
             unSubscribe();
         };
     }, [])
-    const authinfo = { registerUser, loginUser, googleLogin, user, loading, logOut };
+    const authinfo = { registerUser, loginUser, googleLogin, user, loading, logOut, updateUserProfile };
     return (
         <AuthContext value={authinfo}>
             {children}

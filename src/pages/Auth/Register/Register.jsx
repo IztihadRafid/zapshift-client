@@ -1,16 +1,44 @@
 import useAuth from "@/hooks/useAuth";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import axios from "axios";
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { registerUser } = useAuth();
-
+    const { registerUser ,updateUserProfile} = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
     const handleRegistration = (data) => {
-        console.log(data)
-        registerUser(data.firstName, data.lastName,data.email, data.password).then(res => {
+
+        const profileImg = data.photo[0]
+        registerUser(data.email, data.password).then(res => {
             console.log(res.user)
+
+            // store img and get photo url
+            const formData = new FormData();
+            formData.append('image', profileImg)
+
+            // imgbb API KEY URL
+            const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host_key}`
+
+            axios.post(image_API_URL, formData)
+                .then(res => { 
+                    console.log("after upload", res.data.data.url) 
+                    // update profile 
+                    const userProfile = {
+                        displayName: `${data.firstName} ${data.lastName}`,
+                        photoURL: res.data.data.url
+                    }
+                    updateUserProfile(userProfile)
+                    .then(()=>{
+                       navigate(location?.state || "/")
+                    })
+                    .catch(err => console.log(err))
+                })
+
+
+
         }).catch(err => console.log(err))
     };
 
@@ -110,6 +138,20 @@ const Register = () => {
                             {errors.password?.type === 'minLength' && <p className="text-red-500 text-sm font-bold my-1">Atleast 4 characters</p>}
                         </div>
 
+                        {/* photo */}
+                        <div>
+                            <label className="block mb-1 font-medium">Photo</label>
+                            <input
+                                {...register("photo", { required: true, })}
+                                type="file"
+                                placeholder="Your Photo"
+                                className="w-full px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-lime-500 rounded-[20px]"
+                            />
+                            {errors.photo?.type === 'required' && <p className="text-red-500 text-sm font-bold my-1">Photo is required</p>}
+
+                        </div>
+
+
                         {/* Submit Button */}
                         <button
                             type="submit"
@@ -121,7 +163,7 @@ const Register = () => {
                     <SocialLogin></SocialLogin>
                     <p className="text-base text-center mt-4 text-gray-500 flex flex-wrap justify-center gap-1">
                         <span> Already have an account?{" "}</span>
-                        <NavLink to="/login" className="text-primary cursor-pointer hover:text-lime-600">
+                        <NavLink state={location?.state} to="/login" className="text-primary cursor-pointer hover:text-lime-600">
                             Login
                         </NavLink>
                     </p>

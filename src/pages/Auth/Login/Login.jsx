@@ -1,16 +1,22 @@
 import useAuth from "@/hooks/useAuth";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { loginUser } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+
     const handleLogin = (data) => {
         console.log(data)
         loginUser(data.email, data.password)
             .then(res => {
                 console.log(res.user)
+                navigate(location?.state || "/")
             })
             .catch(err => console.log(err))
     };
@@ -58,9 +64,9 @@ const Login = () => {
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(135deg,rgba(132,204,22,0.36)_25%,transparent_25%),linear-gradient(225deg,rgba(101,163,13,0.36)_25%,transparent_25%)] bg-[length:40px_40px] opacity-80 animate-[login-water_5s_linear_infinite]" />
 
                 <div className="relative bg-white/95 rounded-[12px] p-6 sm:p-7 shadow-[0_12px_30px_rgba(15,23,42,0.12)]">
-                <p className="mb-5 text-center text-2xl font-bold text-gray-900">Welcome To Back</p>
+                    <p className="mb-5 text-center text-2xl font-bold text-gray-900">Welcome To Back</p>
                     <h2 className="mb-5 text-center text-xl font-bold text-gray-900">Please Login</h2>
-                    
+
                     <form onSubmit={handleSubmit(handleLogin)} className="space-y-3">
 
                         {/* Email */}
@@ -101,7 +107,7 @@ const Login = () => {
 
                     <p className="text-base text-center mt-4 text-gray-500 flex flex-wrap justify-center gap-1">
                         <span> Don't have account?{" "}</span>
-                        <NavLink to="/register" className="text-primary cursor-pointer hover:text-lime-600">
+                        <NavLink state={location?.state} to="/register" className="text-primary cursor-pointer hover:text-lime-600">
                             Register
                         </NavLink>
                     </p>

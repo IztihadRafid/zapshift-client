@@ -5,6 +5,8 @@ import Register from "@/pages/Auth/Register/Register";
 import Coverage from "@/pages/Coverage/Coverage";
 import Home from "@/pages/Home/Home/Home";
 import { createBrowserRouter } from "react-router";
+import PrivateRoute from "./PrivateRoute";
+import Rider from "@/pages/Rider/Rider";
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +17,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home
+      },
+      {
+        path: "/rider",
+        element: <PrivateRoute><Rider></Rider></PrivateRoute>
       },
       {
         path: "/coverage",
