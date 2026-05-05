@@ -5,7 +5,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
 
-    const { register, handleSubmit,getValues, formState: { errors } } = useForm();
+    const { register, handleSubmit, getValues, formState: { errors } } = useForm();
     const { loginUser, forgetPassword } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
@@ -18,20 +18,20 @@ const Login = () => {
                 console.log(res.user)
                 navigate(location?.state || "/")
             })
-            .catch(err => console.log(err))    
+            .catch(err => console.log(err))
     };
-const handleForgetPassword=()=>{
-    const email = getValues('email');
-    if(!email){
-        alert('Please enter your email')
-        return;
+    const handleForgetPassword = () => {
+        const email = getValues('email');
+        if (!email) {
+            alert('Please enter your email')
+            return;
+        }
+        forgetPassword(email)
+            .then(() => {
+                alert('Password reset link sent to your email')
+            })
+            .catch(err => console.log(err))
     }
-    forgetPassword(email)
-    .then(()=>{
-        alert('Password reset link sent to your email')
-    })
-    .catch(err=>console.log(err))
-}
 
 
 

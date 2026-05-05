@@ -7,6 +7,8 @@ import Home from "@/pages/Home/Home/Home";
 import { createBrowserRouter } from "react-router";
 import PrivateRoute from "./PrivateRoute";
 import Rider from "@/pages/Rider/Rider";
+import AboutUs from "@/pages/AboutUs/AboutUs";
+import SendParcel from "@/pages/SendParcel/SendParcel";
 
 export const router = createBrowserRouter([
   {
@@ -19,8 +21,16 @@ export const router = createBrowserRouter([
         Component: Home
       },
       {
+        path: "/aboutus",
+        Component: AboutUs
+      },
+      {
         path: "/rider",
         element: <PrivateRoute><Rider></Rider></PrivateRoute>
+      },
+      {
+        path:"/send-parcel",
+        element:<PrivateRoute><SendParcel></SendParcel></PrivateRoute>
       },
       {
         path: "/coverage",
