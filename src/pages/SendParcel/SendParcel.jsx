@@ -56,7 +56,7 @@ const SendParcel = () => {
             imageHeight:80,
             imageWidth:80,
             showCancelButton: true,
-            confirmButtonColor: "#99c026",
+            confirmButtonColor: "#56bd1f",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, I agree"
         }).then((result) => {

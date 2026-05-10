@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaEdit, FaEye, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import deleteImg from "@/assets/delete.png";
+import { NavLink } from "react-router";
 const MyParcels = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
@@ -34,7 +35,7 @@ const MyParcels = () => {
       imageHeight: 100,
       imageWidth: 100,
       showCancelButton: true,
-      confirmButtonColor: "#99c026",
+      confirmButtonColor: "#56bd1f",
       cancelButtonColor: "#d33",
       confirmButtonText: "Delete",
     }).then((result) => {
@@ -58,8 +59,10 @@ const MyParcels = () => {
           <TableRow>
             <TableHead className="w-[100px]">No.</TableHead>
             <TableHead className="w-[100px]">Name</TableHead>
+            <TableHead className="w-[100px]">Parcel Name</TableHead>
             <TableHead>Cost</TableHead>
-            <TableHead>Payment Status</TableHead>
+            <TableHead>Payment</TableHead>
+            <TableHead>Delivery Status</TableHead>
             <TableHead className="text-right">Action</TableHead>
           </TableRow>
         </TableHeader>
@@ -71,8 +74,22 @@ const MyParcels = () => {
               <TableCell className="font-medium">
                 {parcel?.senderName}
               </TableCell>
+               <TableCell className="font-medium">
+                {parcel?.parcelName}
+              </TableCell>
               <TableCell>{parcel?.cost}</TableCell>
-              <TableCell>Credit Card</TableCell>
+              {
+                parcel?.paymentStatus === "paid" ? (
+                  <TableCell className="font-medium text-green-500">
+                    Paid
+                  </TableCell>
+                ) : (
+                  <NavLink to={`/dashboard/my-parcels/${parcel?._id}`} className="px-4 py-2 rounded-[15px] bg-yellow-400 text-black">
+                    Unpaid
+                  </NavLink>
+                )
+              }
+              <TableCell>{parcel?.deliveryStatus}</TableCell>
               <TableCell className="text-center">
                 <Button className="btn btn-primary">
                   <FaEye />
