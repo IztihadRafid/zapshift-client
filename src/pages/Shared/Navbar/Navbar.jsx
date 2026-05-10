@@ -2,7 +2,7 @@ import Logo from '@/CustomComponents/Logo';
 import useAuth from '@/hooks/useAuth';
 import { NavLink } from 'react-router';
 const Navbar = () => {
-
+const {user,logOut}= useAuth();
   const links = <>
     <li className="list-none">
       <NavLink to="/services" className="text-gray-600 hover:text-gray-800">Services</NavLink>
@@ -19,8 +19,15 @@ const Navbar = () => {
     <li className="list-none">
       <NavLink to="/rider" className="text-gray-600 hover:text-gray-800">Be a Rider</NavLink>
     </li>
+    {
+      user && <>
+        <li className="list-none">
+          <NavLink to="/dashboard/my-parcels" className="text-gray-600 hover:text-gray-800">Dashboard</NavLink>
+        </li>
+      </>
+    }
   </>
-  const {user,logOut}= useAuth();
+  
   const handleLogOut=()=>{
     logOut()
     .then(res=>{
