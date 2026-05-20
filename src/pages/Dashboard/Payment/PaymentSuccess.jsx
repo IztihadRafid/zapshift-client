@@ -15,19 +15,19 @@ const PaymentSuccess = () => {
     if (hasCalled.current) return;
     hasCalled.current = true;
 
-    console.log(sessionId); // ✅ runs only once
+    console.log(sessionId); 
 
     axiosSecure
       .patch(`/payment-success?session_id=${sessionId}`, { sessionId })
       .then((res) => {
-        console.log(res.data); // ✅ runs only once
+        console.log(res.data); 
         setPaymentInfo({
           transactionId: res.data.transactionId,
           trackingId: res.data.trackingId,
         });
       });
   }, [sessionId]);
-console.log("ingfoasdasd",paymentInfo)
+console.log("paymentInfo:",paymentInfo)
   return (
     <div>
       <h1>PAYMENT SUCCESSFUL</h1>

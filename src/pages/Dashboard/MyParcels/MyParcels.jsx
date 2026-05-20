@@ -102,14 +102,16 @@ const MyParcels = () => {
                 // <NavLink to={`/dashboard/my-parcels/${parcel?._id}`} className="px-4 py-2 rounded-[15px] bg-yellow-400 text-black">
                 //   Pay
                 // </NavLink>
-                <button
+                <TableCell>
+                  <button
                   onClick={() => {
                     handlePayment(parcel);
                   }}
-                  className="px-4 py-2 rounded-[15px] bg-yellow-400 text-black"
+                  className="px-4 py-2 rounded-[15px] bg-yellow-400 hover:bg-yellow-500 text-black"
                 >
                   Pay
                 </button>
+                </TableCell>
               )}
               <TableCell>{parcel?.deliveryStatus}</TableCell>
               <TableCell className="text-center">

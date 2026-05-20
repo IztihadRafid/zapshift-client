@@ -15,36 +15,42 @@ import Settings from "@/pages/Dashboard/Setttings/Settings";
 import Payment from "@/pages/Dashboard/Payment/Payment";
 import PaymentSuccess from "@/pages/Dashboard/Payment/PaymentSuccess";
 import PaymentCancelled from "@/pages/Dashboard/Payment/PaymentCancelled";
-
-
+import PaymentHistory from "@/pages/Dashboard/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
-
     path: "/",
     Component: RootLayout,
     children: [
       {
         index: true,
-        Component: Home
+        Component: Home,
       },
       {
         path: "/aboutus",
-        Component: AboutUs
+        Component: AboutUs,
       },
       {
         path: "/rider",
-        element: <PrivateRoute><Rider></Rider></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <Rider></Rider>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/send-parcel",
-        element:<PrivateRoute><SendParcel></SendParcel></PrivateRoute>
+        path: "/send-parcel",
+        element: (
+          <PrivateRoute>
+            <SendParcel></SendParcel>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/coverage",
-        Component: Coverage
-      }
-    ]
+        Component: Coverage,
+      },
+    ],
   },
   {
     path: "/",
@@ -52,39 +58,46 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/login",
-        Component: Login
+        Component: Login,
       },
       {
         path: "/register",
-        Component: Register
-      }
-    ]
+        Component: Register,
+      },
+    ],
   },
   {
-    path:"/dashboard",
-    element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-    children:[
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
       {
-        path:"my-parcels",
-        Component: MyParcels
-        
+        path: "my-parcels",
+        Component: MyParcels,
       },
       {
-        path:"my-parcels/:parcelId",
-        Component: Payment
+        path: "my-parcels/:parcelId",
+        Component: Payment,
       },
       {
-        path:"payment-success",
-        Component:PaymentSuccess
+        path: "payment-success",
+        Component: PaymentSuccess,
       },
       {
-        path:"payment-cancelled",
-        Component:PaymentCancelled
+        path: "payment-cancelled",
+        Component: PaymentCancelled,
       },
       {
-        path:"settings",
-        Component: Settings
+        path: "payment-history",
+        Component: PaymentHistory,
       },
-    ]
-  }
+      {
+        path: "settings",
+        Component: Settings,
+      },
+    ],
+  },
 ]);
