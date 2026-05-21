@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { formatDate } from "@/CustomComponents/FormateDate";
 import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -36,6 +37,7 @@ const PaymentHistory = () => {
             <TableHead className="w-[100px]">Recipient Info</TableHead>
             <TableHead>Tracking No.</TableHead>
             <TableHead>Amount</TableHead>
+            <TableHead>Paid Time</TableHead>
             <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>
@@ -56,6 +58,7 @@ const PaymentHistory = () => {
               <TableCell className="font-medium text-green-500">
                 {payment?.amount}
               </TableCell>
+              <TableCell className="font-medium"> {payment?.paidAt ? formatDate(payment.paidAt) : '—'}</TableCell>
               <TableCell>
                 {" "}
                 <NavLink
