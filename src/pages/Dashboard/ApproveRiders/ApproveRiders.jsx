@@ -13,7 +13,7 @@ import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { FaRegTrashAlt, FaUserCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import { RiChatDeleteLine } from "react-icons/ri";
+
 import Swal from "sweetalert2";
 
 const ApproveRiders = () => {

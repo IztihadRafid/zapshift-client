@@ -1,0 +1,146 @@
+import useAllUser from "@/routes/API/useAllUser";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { formatDate } from "@/CustomComponents/FormateDate";
+import { Button } from "@/components/ui/button";
+import { FaUserShield } from "react-icons/fa6";
+import { FiShieldOff } from "react-icons/fi";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+
+const UsersManagement = () => {
+  const { users, isLoading, refetch } = useAllUser();
+  const axiosSecure = useAxiosSecure();
+
+//   remove Admin function
+const handleRemoveAdmin = async (user) => {
+      Swal.fire({
+        title: "Remove From Admin",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#56bd1f",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirm",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const roleInfo = { role: "user" };
+          axiosSecure.patch(`/users/${user._id}`, roleInfo).then((res) => {
+            if (res.data.modifiedCount > 0) {
+                 console.log(res.data)
+              Swal.fire({
+                title: `${user.firstName} ${user.lastName} Removed From Admin`,
+                icon: "success",
+              });
+              refetch();
+            }
+          });
+        }
+      });
+    ;
+  };
+//   ADMIN making functions
+  const handleMakeAdmin = async (user) => {
+      Swal.fire({
+        title: "Make him/her Admin?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#56bd1f",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirm",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const roleInfo = { role: "admin" };
+          axiosSecure.patch(`/users/${user._id}`, roleInfo).then((res) => {
+            if (res.data.modifiedCount > 0) {
+                 console.log(res.data)
+              Swal.fire({
+                title: `${user.firstName} ${user.lastName} is now an Admin`,
+                icon: "success",
+              });
+              refetch();
+            }
+          });
+        }
+      });
+    ;
+  };
+
+  return (
+    <div className="m-10 overflow-hidden rounded-[15px] bg-white">
+      <Table>
+        <TableHeader>
+          <TableRow className="bg-green-100 hover:bg-green-100">
+            <TableHead className="w-16 text-green-950">No.</TableHead>
+            <TableHead className="text-green-950">User</TableHead>
+            <TableHead className="text-green-950">Email</TableHead>
+            <TableHead className="text-green-950">Role</TableHead>
+            <TableHead className="text-green-950">Created At</TableHead>
+            <TableHead className="text-green-950">Admin Action</TableHead>
+            <TableHead className="text-green-950">Other Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {isLoading ? (
+            <TableRow>
+              <TableCell colSpan={5} className="py-8 text-center">
+                Loading users...
+              </TableCell>
+            </TableRow>
+          ) : users.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={5} className="py-8 text-center">
+                No users found.
+              </TableCell>
+            </TableRow>
+          ) : (
+            users.map((user, index) => (
+              <TableRow key={user._id}>
+                <TableCell className="font-medium">{index + 1}</TableCell>
+                <TableCell>
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={user.photoURL}
+                      alt={`${user.firstName} ${user.lastName}`}
+                      className="h-10 w-10 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="font-medium">
+                        {user.firstName} {user.lastName}
+                      </p>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>
+                  <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium capitalize text-green-700">
+                    {user.role}
+                  </span>
+                </TableCell>
+                <TableCell>{formatDate(user.createdAt)}</TableCell>
+                <TableCell>
+                  {user.role === "admin" ? (
+                    <Button onClick={() => handleRemoveAdmin(user)} className={"btn-primary bg-green-600 text-white"}>
+                      <FiShieldOff></FiShieldOff>
+                    </Button>
+                  ) : (
+                    <Button onClick={() => handleMakeAdmin(user)} className={"btn-primary bg-red-600 text-white"}>
+                      <FaUserShield></FaUserShield>
+                    </Button>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))
+          )}
+        </TableBody>
+      </Table>
+    </div>
+  );
+};
+
+export default UsersManagement;
