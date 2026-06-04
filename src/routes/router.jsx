@@ -19,6 +19,7 @@ import PaymentHistory from "@/pages/Dashboard/PaymentHistory/PaymentHistory";
 import ApproveRiders from "@/pages/Dashboard/ApproveRiders/ApproveRiders";
 import UsersManagement from "@/pages/Dashboard/UserManagemnet/UsersManagement";
 import AdminRoute from "./AdminRoute";
+import AssignRiders from "@/pages/Dashboard/AssignRiders/AssignRiders";
 
 export const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      
+
       {
         path: "/send-parcel",
         element: (
@@ -72,7 +73,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element:  <PrivateRoute> <DashboardLayout></DashboardLayout> </PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        {" "}
+        <DashboardLayout></DashboardLayout>{" "}
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "my-parcels",
@@ -95,12 +101,28 @@ export const router = createBrowserRouter([
         Component: PaymentHistory,
       },
       {
-        path:"approve-riders",
-        element: <AdminRoute><ApproveRiders></ApproveRiders></AdminRoute>
+        path: "approve-riders",
+        element: (
+          <AdminRoute>
+            <ApproveRiders></ApproveRiders>
+          </AdminRoute>
+        ),
       },
       {
-        path:"users-management",
-        element: <AdminRoute><UsersManagement></UsersManagement></AdminRoute>
+        path: "assign-riders",
+        element: (
+          <AdminRoute>
+            <AssignRiders></AssignRiders>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "users-management",
+        element: (
+          <AdminRoute>
+            <UsersManagement></UsersManagement>
+          </AdminRoute>
+        ),
       },
       {
         path: "settings",

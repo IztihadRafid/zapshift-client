@@ -1,3 +1,4 @@
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -102,7 +103,10 @@ const ApproveRiders = () => {
                 Address
               </TableHead>
               <TableHead className="whitespace-normal text-green-950">
-                Status
+                Application Status
+              </TableHead>
+              <TableHead className="whitespace-normal text-green-950">
+                Work Status
               </TableHead>
               <TableHead className="whitespace-normal text-green-950">
                 Documents
@@ -169,14 +173,19 @@ const ApproveRiders = () => {
                       <p>{rider?.status}</p>
                     </Badge>
                   </TableCell>
-
+                  <TableCell
+                    className="max-w-[30ch] whitespace-normal break-words"
+                    title={rider?.workStatus}
+                  >
+                    {limitText(rider?.workStatus)}
+                  </TableCell>
                   <TableCell className="max-w-[30ch] whitespace-normal break-words">
                     <div>NID: {limitText(rider?.nid)}</div>
                     <div className="text-muted-foreground">
                       License: {limitText(rider?.license)}
                     </div>
                   </TableCell>
-                  <TableCell className="max-w-[30ch] whitespace-normal break-words">
+                  <TableCell className="max-w-[30ch] whitespace-normal text-sm">
                     {formatDate(rider?.createdAt)}
                   </TableCell>
                   <TableCell
@@ -214,6 +223,7 @@ const ApproveRiders = () => {
           </TableBody>
         </Table>
       </div>
+      
     </div>
   );
 };

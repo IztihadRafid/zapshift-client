@@ -13,6 +13,11 @@ import { FaUserShield } from "react-icons/fa6";
 import { FiShieldOff } from "react-icons/fi";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const UsersManagement = () => {
   const { users, isLoading, refetch, setSearchText, searchText } = useAllUser();
@@ -72,8 +77,12 @@ const UsersManagement = () => {
   return (
     <div>
       <div>
-        <h1 className="lg:text-5xl md:text-3xl text-2xl font-bold text-lime-700 md:p-8 p-4 bg-green-100 rounded-4xl">User Management</h1>
-        <p  className="lg:text-4xl md:text-3xl text-2xl font-bold text-lime-700 md:p-8 ">Total Users: {users.length}</p>
+        <h1 className="lg:text-5xl md:text-3xl text-2xl font-bold text-lime-700 md:p-8 p-4 bg-green-100 rounded-4xl">
+          User Management
+        </h1>
+        <p className="lg:text-4xl md:text-3xl text-2xl font-bold text-lime-700 md:p-8 ">
+          Total Users: {users.length}
+        </p>
       </div>
       <div className="p-2 ml-8 flex justify-between">
         <input
@@ -136,19 +145,34 @@ const UsersManagement = () => {
                   <TableCell>{formatDate(user.createdAt)}</TableCell>
                   <TableCell>
                     {user.role === "admin" ? (
-                      <Button
-                        onClick={() => handleRemoveAdmin(user)}
-                        className={"btn-primary bg-green-600 text-white"}
-                      >
-                        <FiShieldOff></FiShieldOff>
-                      </Button>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Button
+                            onClick={() => handleRemoveAdmin(user)}
+                            className={"btn-primary bg-green-600 text-white"}
+                          >
+                            <FiShieldOff></FiShieldOff>
+
+                            <TooltipContent side="right">
+                              <p>{user.role}</p>
+                            </TooltipContent>
+                          </Button>
+                        </TooltipTrigger>
+                      </Tooltip>
                     ) : (
-                      <Button
-                        onClick={() => handleMakeAdmin(user)}
-                        className={"btn-primary bg-red-600 text-white"}
-                      >
-                        <FaUserShield></FaUserShield>
-                      </Button>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Button
+                            onClick={() => handleMakeAdmin(user)}
+                            className={"btn-primary bg-red-600 text-white"}
+                          >
+                            <FaUserShield></FaUserShield>
+                            <TooltipContent side="right">
+                              <p>{user.role}</p>
+                            </TooltipContent>
+                          </Button>
+                        </TooltipTrigger>
+                      </Tooltip>
                     )}
                   </TableCell>
                 </TableRow>

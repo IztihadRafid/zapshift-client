@@ -67,7 +67,16 @@ const MyParcels = () => {
     window.location.assign(res.data.url);
   };
   return (
-    <div className="overflow-hidden rounded-md border">
+    <div>
+       <div>
+        <h1 className="lg:text-5xl md:text-3xl text-2xl font-bold text-lime-700 md:p-8 p-4 bg-green-100 rounded-4xl">
+         My Parcels
+        </h1>
+        <p className="lg:text-4xl md:text-3xl text-2xl font-bold text-lime-700 md:p-8 ">
+          Total Users: {parcels.length}
+        </p>
+      </div>
+       <div className="overflow-hidden rounded-md border">
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -77,6 +86,7 @@ const MyParcels = () => {
             <TableHead className="w-[100px]">Parcel Name</TableHead>
             <TableHead>Cost</TableHead>
             <TableHead>Payment</TableHead>
+            <TableHead>Tracking Id</TableHead>
             <TableHead>Delivery Status</TableHead>
             <TableHead className="text-right">Action</TableHead>
           </TableRow>
@@ -98,9 +108,6 @@ const MyParcels = () => {
                   Paid
                 </TableCell>
               ) : (
-                // <NavLink to={`/dashboard/my-parcels/${parcel?._id}`} className="px-4 py-2 rounded-[15px] bg-yellow-400 text-black">
-                //   Pay
-                // </NavLink>
                 <TableCell>
                   <button
                   onClick={() => {
@@ -112,6 +119,7 @@ const MyParcels = () => {
                 </button>
                 </TableCell>
               )}
+              <TableCell>{parcel?.trackingId}</TableCell>
               <TableCell>{parcel?.deliveryStatus}</TableCell>
               <TableCell className="text-center">
                 <Button className="btn btn-primary">
@@ -138,6 +146,8 @@ const MyParcels = () => {
         ))}
       </Table>
     </div>
+    </div>
+   
   );
 };
 
