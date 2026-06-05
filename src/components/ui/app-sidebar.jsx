@@ -8,7 +8,7 @@ import {
   FaShoppingBag,
   FaUser,
 } from "react-icons/fa";
-import { MdDashboard, MdDirectionsBike } from "react-icons/md";
+import { MdAssignment, MdDashboard, MdDirectionsBike } from "react-icons/md";
 import { SlSettings } from "react-icons/sl";
 import { NavLink } from "react-router";
 
@@ -25,7 +25,7 @@ export function AppSidebar() {
       icon: MdDashboard,
       label: "Dashboard",
       href: "/dashboard",
-      ignoreActive: true, // 👈 add this flag
+      ignoreActive: true,
     },
     {
       icon: FaShoppingBag,
@@ -61,9 +61,20 @@ export function AppSidebar() {
       href: "/dashboard/users-management",
     },
   ];
-
+  const riderLinks = [
+    {
+      icon: MdAssignment,
+      label: "Assign Deliveries",
+      href: "/dashboard/assign-deliveries",
+    },
+  ];
+  // console.log(role)
   const sidebarLinks =
-    role?.role === "admin" ? [...commonLinks, ...adminLinks] : commonLinks;
+  role?.role === "admin"
+    ? [...commonLinks, ...adminLinks]
+    : role?.role === "rider"
+    ? [...commonLinks, ...riderLinks]
+    : commonLinks; 
 
   return (
     <Sidebar>

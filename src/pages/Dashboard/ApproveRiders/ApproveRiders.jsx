@@ -79,7 +79,7 @@ const ApproveRiders = () => {
       <div>
         <h1 className="text-2xl font-semibold">Approve Riders</h1>
         <p className="text-sm text-muted-foreground">
-          Pending rider applications: {riders.length}
+          Rider Applications: {riders.length}
         </p>
       </div>
 

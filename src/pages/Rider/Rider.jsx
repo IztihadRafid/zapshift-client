@@ -82,7 +82,8 @@ const Rider = () => {
                 type="email"
                 placeholder="Enter Your Email"
                 defaultValue={user?.email}
-                className="w-full px-4 py-2 border rounded-[20px]"
+                className="w-full px-4 py-2 border rounded-[20px] text-gray-500"
+                readOnly
               />
               {errors.email && (
                 <p className="text-red-500 text-sm">Required</p>

@@ -60,8 +60,7 @@ const AssignRiders = () => {
       riderName: rider.name,
       parcelId: selectedParcel._id,
     };
-    const res = await axiosSecure
-      .patch(`/parcels/${selectedParcel._id}`, riderAssignInfo)
+    const res = await axiosSecure.patch(`/parcels/${selectedParcel._id}`, riderAssignInfo)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           Swal.fire({
@@ -69,7 +68,6 @@ const AssignRiders = () => {
             icon: "success",
             confirmButtonColor: "#56bd1f",
           });
-          console.log(res.data);
         }
         refetchParcels();
       });
