@@ -18,14 +18,15 @@ const AssignedDeliveries = () => {
       return res.data;
     },
   });
-  const handleAcceptDelivery = (parcel) => {
-    const statusInfo = { deliveryStatus: "rider_arriving" };
+  const handleDeliveryStatusUpdate = (parcel, status) => {
+    const statusInfo = { deliveryStatus: status ,riderId:parcel.riderId, trackingId:parcel.trackingId};
+    let message = `Parcel Status Updated to ${status.split("_").join(" ")}`;
     axiosSecure
       .patch(`/parcels/${parcel._id}/status`, statusInfo)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           Swal.fire({
-            title: `Delivery Acceptecd`,
+            title: `${message}`,
             icon: "success",
           });
           refetch();
@@ -198,22 +199,61 @@ const AssignedDeliveries = () => {
               </div>
 
               {/* Accept / Reject buttons */}
-              <div className="border-t border-gray-100">
+              <div className="border-t border-gray-100 flex flex-col gap-2">
+                {/*  Accept */}
                 {parcel.deliveryStatus === "driver_assigned" ? (
-                  <div className="grid grid-cols-2">
-                    <button
-                      onClick={() => handleAcceptDelivery(parcel)}
-                      className="flex items-center justify-center gap-1.5 py-3 text-sm font-semibold text-white bg-green-700 hover:bg-green-800 transition-colors rounded-bl-[15px]"
-                    >
-                      <FiCheckCircle size={15} /> Accept
-                    </button>
-                    <button className="flex items-center justify-center gap-1.5 py-3 text-sm font-semibold text-red-700 bg-red-50 hover:bg-red-100 transition-colors border-l border-gray-100 rounded-br-[15px]">
-                      <FiXCircle size={15} /> Reject
-                    </button>
-                  </div>
+                  <button
+                    onClick={() =>
+                      handleDeliveryStatusUpdate(parcel, "rider_arriving")
+                    }
+                    className="flex items-center justify-center gap-1.5 py-3 text-sm font-semibold text-white bg-primary hover:bg-green-800 transition-colors"
+                  >
+                    <FiCheckCircle size={15} /> Accept
+                  </button>
                 ) : (
-                  <p className="flex items-center justify-center gap-1.5 py-3 text-sm font-semibold bg-green-700 text-white">
-                    <FiCheckCircle size={15} /> Already Accepted
+                  <p className="flex items-center justify-center gap-1.5 py-3 text-sm font-semibold bg-green-900 text-white">
+                    <FiCheckCircle size={15} /> Accepted
+                  </p>
+                )}
+
+                {/*  Mark as Picked Up */}
+                {parcel.deliveryStatus === "rider_arriving" ? (
+                  <button
+                    onClick={() =>
+                      handleDeliveryStatusUpdate(parcel, "parcel_picked")
+                    }
+                    className="flex items-center justify-center gap-1.5 py-3 text-sm font-semibold text-white bg-primary hover:bg-green-800 transition-colors"
+                  >
+                    <FiXCircle size={15} /> Mark As Picked Up
+                  </button>
+                ) : parcel.deliveryStatus === "parcel_picked" ||
+                  parcel.deliveryStatus === "parcel_delivered" ? (
+                  <p className="flex items-center justify-center gap-1.5  py-3 text-sm font-semibold bg-green-900 text-white">
+                    <FiCheckCircle size={15} /> Picked Up
+                  </p>
+                ) : (
+                  <p className="flex items-center justify-center gap-1.5 py-3 text-sm font-semibold bg-gray-200 text-gray-400">
+                    <FiXCircle size={15} /> Mark As Picked Up
+                  </p>
+                )}
+
+                {/* Mark as Delivered */}
+                {parcel.deliveryStatus === "parcel_picked" ? (
+                  <button
+                    onClick={() =>
+                      handleDeliveryStatusUpdate(parcel, "parcel_delivered")
+                    }
+                    className="flex items-center justify-center gap-1.5 py-3 text-sm font-semibold text-white bg-primary hover:bg-green-800 transition-colors"
+                  >
+                    <FiXCircle size={15} /> Mark As Delivered
+                  </button>
+                ) : parcel.deliveryStatus === "parcel_delivered" ? (
+                  <p className="flex items-center justify-center gap-1.5 py-3 text-sm font-semibold bg-green-900 text-white">
+                    <FiCheckCircle size={15} /> Delivered
+                  </p>
+                ) : (
+                  <p className="flex items-center justify-center gap-1.5 py-3 text-sm font-semibold bg-gray-200 text-gray-400">
+                    <FiXCircle size={15} /> Mark As Delivered
                   </p>
                 )}
               </div>

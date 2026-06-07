@@ -48,8 +48,8 @@ const AssignRiders = () => {
 
   const openAssignRiderModal = (parcel) => {
     setSelectedParcel(parcel);
-    console.log(parcel.senderDistrict);
-    console.log(parcel);
+    // console.log(parcel.senderDistrict);
+    // console.log(parcel);
   };
 
   // Handle Assign RIder function
@@ -59,6 +59,7 @@ const AssignRiders = () => {
       riderEmail: rider.email,
       riderName: rider.name,
       parcelId: selectedParcel._id,
+      trackingId: selectedParcel.trackingId,
     };
     const res = await axiosSecure.patch(`/parcels/${selectedParcel._id}`, riderAssignInfo)
       .then((res) => {

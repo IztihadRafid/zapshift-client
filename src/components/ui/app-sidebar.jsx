@@ -2,6 +2,7 @@ import { Sidebar, SidebarContent } from "@/components/ui/sidebar";
 import Logo from "@/CustomComponents/Logo";
 import useRole from "@/hooks/useRole";
 import {
+    FaCheckCircle,
   FaHistory,
   FaHome,
   FaMotorcycle,
@@ -67,6 +68,11 @@ export function AppSidebar() {
       label: "Assign Deliveries",
       href: "/dashboard/assign-deliveries",
     },
+    {
+      icon: FaCheckCircle,
+      label: "Completed Deliveries",
+      href: "/dashboard/completed-deliveries",
+    }
   ];
   // console.log(role)
   const sidebarLinks =

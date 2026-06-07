@@ -12,10 +12,10 @@ const Login = () => {
 
 
     const handleLogin = (data) => {
-        console.log(data)
+        // console.log(data)
         loginUser(data.email, data.password)
             .then(res => {
-                console.log(res.user)
+                // console.log(res.user)
                 navigate(location?.state || "/")
             })
             .catch(err => console.log(err))
