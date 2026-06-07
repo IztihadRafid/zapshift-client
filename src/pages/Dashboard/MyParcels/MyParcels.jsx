@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaEdit, FaEye, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import deleteImg from "@/assets/delete.png";
+import { Link } from "react-router";
 
 const MyParcels = () => {
   const axiosSecure = useAxiosSecure();
@@ -58,6 +59,7 @@ const MyParcels = () => {
       parcelName: parcel?.parcelName,
       parcelId: parcel?._id,
       senderEmail: parcel?.senderEmail,
+      trackingId: parcel?.trackingId
     };
     const res = await axiosSecure.post(
       "/payment-checkout-session",
@@ -119,7 +121,7 @@ const MyParcels = () => {
                 </button>
                 </TableCell>
               )}
-              <TableCell>{parcel?.trackingId}</TableCell>
+              <TableCell className="text-blue-500 hover:text-blue-800"><Link to={`/parcel-track/${parcel.trackingId}`}>{parcel?.trackingId}</Link></TableCell>
               <TableCell>{parcel?.deliveryStatus}</TableCell>
               <TableCell className="text-center">
                 <Button className="btn btn-primary">
