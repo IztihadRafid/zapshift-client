@@ -14,7 +14,7 @@ const MarchantSection = () => {
                     <p className="text-lg text-gray-400 p-2 lg:pb-4">We Offer the lowest delivery charge with the highest value along with a wide range of services. Courier Services are available for all major cities.</p>
                     <div>
                         <Button className="rounded-full p-6 text-black font-bold text-lg md:mb-0 mb-3">Be a Merchant</Button>
-                        <Button className="rounded-full p-6 text-black font-bold text-lg">Earn with ZapShift Courier</Button>
+                        <Button className="rounded-full p-6 text-black font-bold text-lg">Earn with Veloxa Courier</Button>
                     </div>
                 </div>
                 <div>

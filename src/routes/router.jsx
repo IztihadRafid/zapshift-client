@@ -24,6 +24,9 @@ import AssignedDeliveries from "@/pages/Dashboard/AssignedDeliveries/AssignedDel
 import CompletedDeiliveries from "@/pages/Dashboard/CompletedDeliveries/CompletedDeiliveries";
 import ParcelTrack from "@/pages/Dashboard/ParcelTrack/ParcelTrack";
 import DashboardHome from "@/pages/Dashboard/DashboardHome/DashboardHome";
+import ServicesPage from "@/pages/Services/Services";
+import TermOfService from "@/pages/TermsPolicy/TermOfService";
+import PrivacyPolicy from "@/pages/TermsPolicy/PrivacyPolicy";
 
 export const router = createBrowserRouter([
   {
@@ -39,8 +42,20 @@ export const router = createBrowserRouter([
         Component: AboutUs,
       },
       {
-        path:"/parcel-track/:trackingId",
-        Component:ParcelTrack
+        path: "/services",
+        Component: ServicesPage,
+      },
+      {
+        path: "/parcel-track/:trackingId",
+        Component: ParcelTrack,
+      },
+      {
+        path: "/termsof-service",
+        Component: TermOfService,
+      },
+      {
+        path: "/policy",
+        Component: PrivacyPolicy,
       },
       {
         path: "/rider",
@@ -89,9 +104,8 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        index:true,
-        Component:DashboardHome
-        
+        index: true,
+        Component: DashboardHome,
       },
       {
         path: "my-parcels",
@@ -155,7 +169,6 @@ export const router = createBrowserRouter([
           </RiderRoute>
         ),
       },
-      
     ],
   },
 ]);

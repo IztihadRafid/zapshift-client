@@ -110,7 +110,7 @@ const Register = () => {
 
         <div className="relative bg-white/95 rounded-[12px] p-6 sm:p-7 shadow-[0_12px_30px_rgba(15,23,42,0.12)]">
           <p className="mb-5 text-center text-2xl font-bold text-gray-900">
-            Welcome To ZapShift
+            Welcome To Veloxa
           </p>
           <h2 className="mb-5 text-center text-xl font-bold text-gray-900">
             Please Register

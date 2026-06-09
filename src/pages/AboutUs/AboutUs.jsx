@@ -14,7 +14,7 @@ const AboutUs = () => {
         {
             icon: <TbUserCheck />,
             title: "Rider Picks Up",
-            text: "A verified ZapShift rider arrives at your pickup location and collects your parcel safely.",
+            text: "A verified Veloxa rider arrives at your pickup location and collects your parcel safely.",
         },
         {
             icon: <TbTruckDelivery />,
@@ -36,13 +36,13 @@ const AboutUs = () => {
             <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div className="space-y-6">
                     <span className="inline-flex rounded-[20px] bg-primary/15 px-4 py-2 text-sm font-semibold text-green-800">
-                        About ZapShift Parcel Delivery
+                        About Veloxa Parcel Delivery
                     </span>
                     <h1 className="text-4xl md:text-5xl font-bold leading-tight text-green-900">
                         Fast, safe, and reliable delivery for every parcel.
                     </h1>
                     <p className="text-base md:text-lg leading-relaxed text-gray-600">
-                        Welcome to ZapShift Parcel Delivery, your trusted partner for modern logistics. We make parcel delivery simple, efficient, and stress-free for individuals, merchants, and growing businesses.
+                        Welcome to Veloxa Parcel Delivery, your trusted partner for modern logistics. We make parcel delivery simple, efficient, and stress-free for individuals, merchants, and growing businesses.
                     </p>
                     <p className="text-base md:text-lg leading-relaxed text-gray-600">
                         Whether you are sending a personal package or managing business shipments, our team helps your parcel reach its destination securely, transparently, and on time.
@@ -66,7 +66,7 @@ const AboutUs = () => {
 
                 <div className="relative overflow-hidden rounded-[15px] bg-gradient-to-br from-[#0d3b36] to-[#0a2e2a] p-6 shadow-[0_22px_45px_rgba(132,204,22,0.22)]">
                     <div className="absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(135deg,rgba(132,204,22,0.28)_25%,transparent_25%),linear-gradient(225deg,rgba(101,163,13,0.28)_25%,transparent_25%)] bg-[length:42px_42px]" />
-                    <img src={deliveryMan} alt="ZapShift delivery rider" className="relative z-10 mx-auto max-h-[390px] w-full object-contain" />
+                    <img src={deliveryMan} alt="Veloxa delivery rider" className="relative z-10 mx-auto max-h-[390px] w-full object-contain" />
                 </div>
             </section>
 
@@ -98,7 +98,7 @@ const AboutUs = () => {
                     <div>
                         <h2 className="text-3xl font-bold text-green-900">Why Choose Us?</h2>
                         <p className="mt-4 text-gray-600 leading-relaxed">
-                            ZapShift combines speed, verified riders, secure parcel handling, and an easy booking experience so delivery feels dependable every time.
+                            Veloxa combines speed, verified riders, secure parcel handling, and an easy booking experience so delivery feels dependable every time.
                         </p>
                     </div>
 
@@ -122,7 +122,7 @@ const AboutUs = () => {
                     </div>
                     <h2 className="mb-4 text-3xl font-bold">Built On Trust</h2>
                     <p className="leading-relaxed text-gray-300">
-                        At ZapShift, delivery is not only about moving parcels. It is about building trust between sender and receiver through clear communication, careful handling, and dependable service.
+                        At Veloxa, delivery is not only about moving parcels. It is about building trust between sender and receiver through clear communication, careful handling, and dependable service.
                     </p>
                 </div>
 

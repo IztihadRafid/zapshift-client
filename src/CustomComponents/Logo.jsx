@@ -5,7 +5,7 @@ const Logo = () => {
     return (
         <NavLink to="/" className="flex items-center lg:ml-4 ">
             <img src={logo} alt="Logo" className="" />
-            <h1 className="text-xl font-bold absolute ml-6 mt-4">ZapShift</h1>
+            <h1 className="text-xl font-bold absolute ml-6 mt-4">Veloxa</h1>
         </NavLink>
     );
 };

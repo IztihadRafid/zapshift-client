@@ -2,14 +2,14 @@ import { useState } from "react";
 
 const faqData = [
   {
-    question: "How does ZapShift delivery system work?",
+    question: "How does Veloxa delivery system work?",
     answer:
-      "ZapShift is a real-time delivery platform where users can place orders through the app or website. Once an order is confirmed, our system automatically finds the nearest available delivery rider using location-based matching. The rider then picks up the parcel from the sender and delivers it to the receiver with live tracking updates. Throughout the entire process, users can monitor the delivery status in real time, ensuring transparency and reliability."
+      "Veloxa is a real-time delivery platform where users can place orders through the app or website. Once an order is confirmed, our system automatically finds the nearest available delivery rider using location-based matching. The rider then picks up the parcel from the sender and delivers it to the receiver with live tracking updates. Throughout the entire process, users can monitor the delivery status in real time, ensuring transparency and reliability."
   },
   {
     question: "Can I track my delivery in real time?",
     answer:
-      "Yes, ZapShift provides full real-time tracking for every delivery. After your order is assigned to a rider, you will receive a tracking ID. Using this ID, you can see live updates such as when the parcel is picked up, the rider’s current location, estimated arrival time, and final delivery confirmation. This ensures complete visibility and peace of mind throughout the delivery journey."
+      "Yes, Veloxa provides full real-time tracking for every delivery. After your order is assigned to a rider, you will receive a tracking ID. Using this ID, you can see live updates such as when the parcel is picked up, the rider’s current location, estimated arrival time, and final delivery confirmation. This ensures complete visibility and peace of mind throughout the delivery journey."
   },
   {
     question: "How long does delivery usually take?",
@@ -24,7 +24,7 @@ const faqData = [
   {
     question: "Is my parcel safe during delivery?",
     answer:
-      "Absolutely. At ZapShift, parcel safety is our top priority. All riders go through strict verification before joining the platform. In addition, each delivery is tracked in real time, reducing the risk of loss or misplacement. We also ensure secure handling procedures so that your items reach the destination safely and in the same condition they were sent."
+      "Absolutely. At Veloxa, parcel safety is our top priority. All riders go through strict verification before joining the platform. In addition, each delivery is tracked in real time, reducing the risk of loss or misplacement. We also ensure secure handling procedures so that your items reach the destination safely and in the same condition they were sent."
   }
 ];
 

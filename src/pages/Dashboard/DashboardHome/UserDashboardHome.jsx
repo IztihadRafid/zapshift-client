@@ -64,7 +64,7 @@ const UserDashboardHome = () => {
                     {userData?.role || "user"} account
                   </p>
                   <h1 className="text-2xl font-bold sm:text-3xl">
-                    {fullName || user?.displayName || "ZapShift User"}
+                    {fullName || user?.displayName || "Veloxa User"}
                   </h1>
                   <p className="mt-2 flex items-center gap-2 text-sm text-emerald-50 sm:text-base">
                     <Mail className="h-4 w-4 shrink-0" />
