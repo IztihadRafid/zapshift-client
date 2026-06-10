@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router";
-const axiosSecure = axios.create({ baseURL: "https://veloxa-server.vercel.app" });
+const axiosSecure = axios.create({ baseURL: "http://localhost:8082" });
 const useAxiosSecure = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();

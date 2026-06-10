@@ -184,7 +184,7 @@ const Register = () => {
               )}
               {errors.password?.type === "minLength" && (
                 <p className="text-red-500 text-sm font-bold my-1">
-                  Atleast 4 characters
+                  Atleast 6 characters
                 </p>
               )}
             </div>
